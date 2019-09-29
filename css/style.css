@@ -1,6 +1,15 @@
 body {
 }
 
+#start {
+    display: none;
+}
+
+#login {
+    /*display: none;*/
+}
+
+
 @font-face {
     font-family: "EBGaramond";
     src: url("../fonts/Game of Thrones.ttf");
@@ -46,9 +55,6 @@ body {
     margin-bottom: 10%;
 }
 
-.menu-game {
-
-}
 
 .sub-title {
     color: #fef8eb;
@@ -79,7 +85,7 @@ body {
     position: relative;
 }
 
-.save {
+.button-submit {
     margin-top: 10%;
     width: 60%;
     margin-right: 20%;
