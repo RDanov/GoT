@@ -42,7 +42,9 @@ body {
     display: flex;
     flex-direction: column;
     width: 50%;
-    background-color: #202020;
+    background-image: url("img/darknoise.png");
+    background-size: cover;
+    background-position: center;
     margin-left: 0;
     text-align: center;
     justify-content: center;
@@ -194,4 +196,19 @@ body {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 35px #202020 inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #d3bb89 !important;
+}
+
+#preferences {
+    resize: none;
 }
