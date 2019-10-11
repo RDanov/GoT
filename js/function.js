@@ -82,9 +82,12 @@ document.getElementById('username').addEventListener('focusout', (evt) => {
 });
 
 document.getElementById('username').addEventListener('input', (ev) => {
+    if (flagEnter) {
+        return false;
+    }
     const userName = document.getElementById('username');
     userName.style.color = "";
-    if (!validName.test(userName.value) && !flagEnter) {
+    if (!validName.test(userName.value)) {
         userName.style.color = 'red';
         flagName = false;
         flagEnter = false;
@@ -111,8 +114,11 @@ document.getElementById("select-house").addEventListener('blur', (e) => {
 
 
 document.getElementById("preferences").addEventListener('focusout', (e) => {
+    if (!flagEnter) {
+        return false;
+    }
     const yourPreferences = document.getElementById("preferences");
-    if (!validPreferences.test(yourPreferences.value) && flagEnter) {
+    if (!validPreferences.test(yourPreferences.value)) {
         yourPreferences.style.color = 'red';
         flagPreferences = false;
         flagEnter = false;
@@ -124,9 +130,12 @@ document.getElementById("preferences").addEventListener('focusout', (e) => {
 });
 
 document.getElementById("preferences").addEventListener('input', (ev) => {
+    if (flagEnter) {
+        return false;
+    }
     const yourPreferences = document.getElementById("preferences");
     yourPreferences.style.color = "";
-    if (!validPreferences.test(yourPreferences.value) && !flagEnter) {
+    if (!validPreferences.test(yourPreferences.value)) {
         yourPreferences.style.color = 'red';
         flagPreferences = false;
         flagEnter = false;
