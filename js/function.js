@@ -4,13 +4,13 @@ let flagPassword = false;
 let flagName = false;
 let flagHouse = false;
 let flagPreferences = false;
-const validEmail = /^[\w\.\-\_]+\@\w+\.\w{2,8}$/i;
+const validEmail = /.+@.+\..+/i;
 const validPassword = /[0-9a-zA-Z!@#$%^&*]{8,}/;
-const validName = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ' ]+[a-zA-Zа-яА-ЯёЁ']?$/;
-const validPreferences = /^[a-zA-Zа-яА-ЯёЁ'][a-zA-Z-а-яА-ЯёЁ' ]+[a-zA-Zа-яА-ЯёЁ']{10,}?$/;
+const validName = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']?$/;
+const validPreferences = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']{10,}?$/;
 
 
-document.getElementById('email').addEventListener('focusout', (ev) => {
+document.getElementById('email').addEventListener('focusout', () => {
     const userEmail = document.getElementById('email');
     if (!validEmail.test(userEmail.value) && flagEnter) {
         userEmail.style.color = 'red';
@@ -20,7 +20,7 @@ document.getElementById('email').addEventListener('focusout', (ev) => {
     }
 });
 
-document.getElementById('email').addEventListener('input', (ev) => {
+document.getElementById('email').addEventListener('input', () => {
     const userEmail = document.getElementById('email');
     userEmail.style.color = "";
     if (!validEmail.test(userEmail.value) && !flagEnter) {
@@ -33,7 +33,7 @@ document.getElementById('email').addEventListener('input', (ev) => {
 });
 
 
-document.getElementById('user-password').addEventListener('focusout', (ev) => {
+document.getElementById('user-password').addEventListener('focusout', () => {
     const userPassword = document.getElementById('user-password');
     if (!validPassword.test(userPassword.value) && flagEnter) {
         userPassword.style.color = 'red';
@@ -44,7 +44,7 @@ document.getElementById('user-password').addEventListener('focusout', (ev) => {
 });
 
 
-document.getElementById('user-password').addEventListener('input', (ev) => {
+document.getElementById('user-password').addEventListener('input', () => {
     const userPassword = document.getElementById('user-password');
     userPassword.style.color = "";
     if (!validPassword.test(userPassword.value) && !flagEnter) {
@@ -67,7 +67,7 @@ document.getElementById('button-login').addEventListener('click', (e) => {
     }
 });
 
-document.getElementById('username').addEventListener('focusout', (evt) => {
+document.getElementById('username').addEventListener('focusout', () => {
     const userName = document.getElementById('username');
     if (!validName.test(userName.value) && flagEnter) {
         userName.style.color = 'red';
@@ -81,7 +81,7 @@ document.getElementById('username').addEventListener('focusout', (evt) => {
 
 });
 
-document.getElementById('username').addEventListener('input', (ev) => {
+document.getElementById('username').addEventListener('input', () => {
     if (flagEnter) {
         return false;
     }
@@ -98,38 +98,38 @@ document.getElementById('username').addEventListener('input', (ev) => {
     }
 });
 
-document.getElementById("select-house").addEventListener('blur', (e) => {
+document.getElementById("select-house").addEventListener('blur', () => {
         const selectHouse = document.getElementById("select-house");
-        if (selectHouse.value === "Select House") {
+        if (selectHouse.value !== "Select House") {
+            flagHouse = true;
+            selectHouse.style.border = 'none';
+        } else {
             selectHouse.style.border = '2px solid red';
             flagHouse = false;
             flagEnter = false;
             return false;
-        } else {
-            flagHouse = true;
-            selectHouse.style.border = 'none';
         }
     }
 );
 
 
-document.getElementById("preferences").addEventListener('focusout', (e) => {
+document.getElementById("preferences").addEventListener('focusout', () => {
     if (!flagEnter) {
         return false;
     }
     const yourPreferences = document.getElementById("preferences");
-    if (!validPreferences.test(yourPreferences.value)) {
+    if (validPreferences.test(yourPreferences.value)) {
+        yourPreferences.style.color = "";
+        flagPreferences = true;
+    } else {
         yourPreferences.style.color = 'red';
         flagPreferences = false;
         flagEnter = false;
         return false
-    } else {
-        yourPreferences.style.color = "";
-        flagPreferences = true;
     }
 });
 
-document.getElementById("preferences").addEventListener('input', (ev) => {
+document.getElementById("preferences").addEventListener('input', () => {
     if (flagEnter) {
         return false;
     }
