@@ -1,20 +1,21 @@
 let flagEnter = true;
-let flagEmail = false;
-let flagPassword = false;
-let flagName = false;
-let flagHouse = false;
-let flagPreferences = false;
 const validEmail = /.+@.+\..+/i;
 const validPassword = /[0-9a-zA-Z!@#$%^&*]{8,}/;
 const validName = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']?$/;
 const validPreferences = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']{10,}?$/;
 
+function validation(userValue, validRegExp) {
+    return validRegExp.test(userValue.value);
+}
+
+function validationHouse(selectHouse) {
+    return (selectHouse.value !== "Select House");
+}
 
 document.getElementById('email').addEventListener('focusout', () => {
     const userEmail = document.getElementById('email');
-    if (!validEmail.test(userEmail.value) && flagEnter) {
-        userEmail.style.color = 'red';
-        flagEmail = false;
+    if (!validation(userEmail, validEmail) && flagEnter) {
+        userEmail.classList.add("error-input");
         flagEnter = false;
         return false;
     }
@@ -22,22 +23,17 @@ document.getElementById('email').addEventListener('focusout', () => {
 
 document.getElementById('email').addEventListener('input', () => {
     const userEmail = document.getElementById('email');
-    userEmail.style.color = "";
-    if (!validEmail.test(userEmail.value) && !flagEnter) {
-        userEmail.style.color = 'red';
+    userEmail.classList.remove("error-input");
+    if (!validation(userEmail, validEmail) && !flagEnter) {
+        userEmail.classList.add("error-input");
         return false;
-    } else {
-        userEmail.style.color = "";
-        flagEmail = true;
     }
 });
 
-
 document.getElementById('user-password').addEventListener('focusout', () => {
     const userPassword = document.getElementById('user-password');
-    if (!validPassword.test(userPassword.value) && flagEnter) {
-        userPassword.style.color = 'red';
-        flagPassword = false;
+    if (!validation(userPassword, validPassword) && flagEnter) {
+        userPassword.classList.add("error-input");
         flagEnter = false;
         return false;
     }
@@ -46,39 +42,34 @@ document.getElementById('user-password').addEventListener('focusout', () => {
 
 document.getElementById('user-password').addEventListener('input', () => {
     const userPassword = document.getElementById('user-password');
-    userPassword.style.color = "";
-    if (!validPassword.test(userPassword.value) && !flagEnter) {
-        userPassword.style.color = 'red';
+    userPassword.classList.remove("error-input");
+    if (!validation(userPassword, validPassword) && !flagEnter) {
+        userPassword.classList.add("error-input");
         return false;
-    } else {
-        userPassword.style.color = "";
-        flagPassword = true;
     }
 });
 
 document.getElementById('button-login').addEventListener('click', (e) => {
     e.preventDefault();
-    if (flagEmail && flagPassword) {
+    const userEmail = document.getElementById('email');
+    const userPassword = document.getElementById('user-password');
+    if (validation(userEmail, validEmail) && validation(userPassword, validPassword)) {
         const login = document.getElementById("login");
-        login.style.display = 'none';
+        login.classList.remove("active");
+        login.classList.add("not-active");
         const start = document.getElementById("start");
-        start.style.display = 'block';
+        start.classList.add("active");
         flagEnter = true;
     }
 });
 
 document.getElementById('username').addEventListener('focusout', () => {
     const userName = document.getElementById('username');
-    if (!validName.test(userName.value) && flagEnter) {
-        userName.style.color = 'red';
-        flagName = false;
+    if (!validation(userName, validName) && flagEnter) {
+        userName.classList.add("error-input");
         flagEnter = false;
         return false;
-    } else {
-        userName.style.color = "";
-        flagName = true;
     }
-
 });
 
 document.getElementById('username').addEventListener('input', () => {
@@ -86,46 +77,35 @@ document.getElementById('username').addEventListener('input', () => {
         return false;
     }
     const userName = document.getElementById('username');
-    userName.style.color = "";
-    if (!validName.test(userName.value)) {
-        userName.style.color = 'red';
-        flagName = false;
+    userName.classList.remove("error-input");
+    if (!validation(userName, validName)) {
+        userName.classList.add("error-input");
         flagEnter = false;
         return false;
     } else {
-        userName.style.color = "";
-        flagName = true;
+        userName.classList.remove("error-input");
     }
 });
 
 document.getElementById("select-house").addEventListener('blur', () => {
         const selectHouse = document.getElementById("select-house");
-        if (selectHouse.value !== "Select House") {
-            flagHouse = true;
-            selectHouse.style.border = 'none';
+        if (validationHouse(selectHouse)) {
+            selectHouse.classList.remove("error-select");
         } else {
-            selectHouse.style.border = '2px solid red';
-            flagHouse = false;
+            selectHouse.classList.add("error-select");
             flagEnter = false;
             return false;
         }
     }
 );
 
-
 document.getElementById("preferences").addEventListener('focusout', () => {
     if (!flagEnter) {
         return false;
     }
     const yourPreferences = document.getElementById("preferences");
-    if (validPreferences.test(yourPreferences.value)) {
-        yourPreferences.style.color = "";
-        flagPreferences = true;
-    } else {
-        yourPreferences.style.color = 'red';
-        flagPreferences = false;
-        flagEnter = false;
-        return false
+    if (!validation(yourPreferences, validPreferences)) {
+        yourPreferences.classList.add("error-input");
     }
 });
 
@@ -134,25 +114,21 @@ document.getElementById("preferences").addEventListener('input', () => {
         return false;
     }
     const yourPreferences = document.getElementById("preferences");
-    yourPreferences.style.color = "";
-    if (!validPreferences.test(yourPreferences.value)) {
-        yourPreferences.style.color = 'red';
-        flagPreferences = false;
-        flagEnter = false;
+    yourPreferences.classList.remove("error-input");
+    if (!validation(yourPreferences, validPreferences)) {
+        yourPreferences.classList.add("error-input");
         return false
     } else {
-        yourPreferences.style.color = "";
-        flagPreferences = true;
+        yourPreferences.classList.remove("error-input");
     }
 });
 
 document.getElementById('button-submit').addEventListener('click', (e) => {
     e.preventDefault();
-    if (flagName && flagPreferences && flagHouse) {
-        const login = document.getElementById("login");
-        login.style.display = 'block';
-        const start = document.getElementById("start");
-        start.style.display = 'none';
-        flagEnter = true;
+    const userName = document.getElementById('username');
+    const selectHouse = document.getElementById("select-house");
+    const yourPreferences = document.getElementById("preferences");
+    if (validation(userName, validName) && validation(yourPreferences, validPreferences) && validationHouse(selectHouse)) {
+        alert('Validation was successful!');
     } else return false;
 });

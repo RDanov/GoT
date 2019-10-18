@@ -2,12 +2,12 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-#start {
+.not-active {
     display: none;
 }
 
-#login {
-    /*display: none;*/
+.active {
+    display: block;
 }
 
 
@@ -15,7 +15,6 @@ body {
     font-family: "Game of Thrones";
     src: url("../fonts/Game of Thrones.ttf");
 }
-
 
 .wrapper {
     width: 100%;
@@ -201,7 +200,7 @@ body {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 35px #202020 inset !important;
 }
 
@@ -211,4 +210,12 @@ input:-webkit-autofill {
 
 #preferences {
     resize: none;
+}
+
+.error-input {
+    color: red;
+}
+
+.error-select {
+    border: 2px solid red;
 }
