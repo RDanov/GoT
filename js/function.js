@@ -132,3 +132,14 @@ document.getElementById('button-submit').addEventListener('click', (e) => {
         alert('Validation was successful!');
     } else return false;
 });
+
+
+$(function () {
+    $(".owl-carousel").owlCarousel({
+        items: 1,
+        center: true,
+        autoWidth: true,
+        loop: true,
+        dots: false,
+    });
+});
