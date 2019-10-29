@@ -21,7 +21,6 @@ body {
     flex-direction: row;
     flex-grow: 1;
     height: 100vh;
-
 }
 
 .wrapper .column:first-of-type {
@@ -34,7 +33,6 @@ body {
     background-size: cover;
     background-position: center;
 }
-
 
 .wrapper .column:last-of-type {
     display: flex;
@@ -55,7 +53,6 @@ body {
     text-transform: uppercase;
     margin-bottom: 10%;
 }
-
 
 .sub-title {
     color: #fef8eb;

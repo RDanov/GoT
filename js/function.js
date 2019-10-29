@@ -59,7 +59,6 @@ document.getElementById('button-login').addEventListener('click', (e) => {
         login.classList.add('not-active');
         document.getElementById('start').classList.add('active');
     }
-
 });
 
 document.getElementById('username').addEventListener('focusout', () => {
@@ -85,7 +84,6 @@ document.getElementById('username').addEventListener('input', () => {
         userName.classList.remove("error-input");
     }
 });
-
 
 document.getElementById("preferences").addEventListener('focusout', () => {
     if (!flagEnter) {
@@ -125,7 +123,6 @@ document.getElementById('button-submit').addEventListener('click', (e) => {
 });
 
 const owl = $('.owl-carousel');
-
 $(function () {
     owl.owlCarousel({
         items: 1,
@@ -139,7 +136,7 @@ $(function () {
     });
 });
 
-$(document).ready(function (e) {
+$(document).ready(function () {
     try {
         $("body select").msDropDown();
     } catch (e) {
@@ -148,14 +145,12 @@ $(document).ready(function (e) {
 });
 
 $('#select-house').on('blur', function () {
-        const hobby = $('#select-house');
-        if (validationHouse(document.getElementById('select-house'))) {
-            owl.trigger('stop.owl.autoplay');
-            owl.trigger('to.owl.carousel', document.getElementById('select-house').value);
-        } else {
-            owl.trigger('play.owl.autoplay');
-            alert('Select your House');
-            return false;
-        }
+    if (validationHouse(document.getElementById('select-house'))) {
+        owl.trigger('stop.owl.autoplay');
+        owl.trigger('to.owl.carousel', document.getElementById('select-house').value);
+    } else {
+        owl.trigger('play.owl.autoplay');
+        alert('Select your House');
+        return false;
     }
-);
+});
