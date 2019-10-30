@@ -58,6 +58,13 @@ document.getElementById('button-login').addEventListener('click', (e) => {
         login.classList.remove('active');
         login.classList.add('not-active');
         document.getElementById('start').classList.add('active');
+        $(document).ready(function () {
+            try {
+                $("body select").msDropDown();
+            } catch (e) {
+                alert(e.message);
+            }
+        });
     }
 });
 
@@ -136,15 +143,9 @@ $(function () {
     });
 });
 
-$(document).ready(function () {
-    try {
-        $("body select").msDropDown();
-    } catch (e) {
-        alert(e.message);
-    }
-});
 
-$('#select-house').on('blur', function () {
+
+$('#select-house').on('change', function () {
     if (validationHouse(document.getElementById('select-house'))) {
         owl.trigger('stop.owl.autoplay');
         owl.trigger('to.owl.carousel', document.getElementById('select-house').value);
