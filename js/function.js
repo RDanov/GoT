@@ -85,7 +85,6 @@ document.getElementById('username').addEventListener('input', () => {
     userName.classList.remove("error-input");
     if (!validation(userName, validName)) {
         userName.classList.add("error-input");
-        flagEnter = false;
         return false;
     } else {
         userName.classList.remove("error-input");
@@ -99,6 +98,7 @@ document.getElementById("preferences").addEventListener('focusout', () => {
     const yourPreferences = document.getElementById("preferences");
     if (!validation(yourPreferences, validPreferences)) {
         yourPreferences.classList.add("error-input");
+        flagEnter = false;
     }
 });
 
@@ -142,7 +142,6 @@ $(function () {
         autoplayTimeout: 2000
     });
 });
-
 
 
 $('#select-house').on('change', function () {
