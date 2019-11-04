@@ -1,7 +1,7 @@
 let flagEnter = true;
 const validEmail = /.+@.+\..+/i;
 const validPassword = /[0-9a-zA-Z!@#$%^&*]{8,}/;
-const validName = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']?$/;
+const validName = /^[a-zA-Z'][0-9a-zA-Z' ]+[0-9a-zA-Z']{2,20}?$/;
 const validPreferences = /^[a-zA-Z'][a-zA-Z' ]+[a-zA-Z']{10,}?$/;
 
 function validation(userValue, validRegExp) {
@@ -149,5 +149,11 @@ $('#select-house').on('change', function () {
         owl.trigger('play.owl.autoplay');
         $("select").children().addClass('error-select');
         return false;
+    }
+});
+
+owl.on('resized.owl.carousel', function () {
+    if (validationHouse(document.getElementById('select-house'))) {
+        owl.trigger('stop.owl.autoplay');
     }
 });
