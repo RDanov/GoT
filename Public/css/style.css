@@ -21,6 +21,7 @@ body {
     flex-direction: row;
     flex-grow: 1;
     height: 100vh;
+    background-image: url("../img/darknoise.png");
 }
 
 .wrapper .column:first-of-type {
@@ -29,7 +30,6 @@ body {
     width: 50%;
     justify-content: flex-end;
     margin-right: 0;
-    background-image: url("../img/maxresdefault.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -38,7 +38,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 50%;
-    background-image: url("../img/darknoise.png");
     background-size: cover;
     background-position: center;
     margin-left: 0;
