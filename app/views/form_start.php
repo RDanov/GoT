@@ -1,10 +1,10 @@
-<form action="" id="start" class="not-active menu-game" method="post">
+<form action="App/views/function.php" id="start" class="active menu-game" method="post">
     <div class="sub-title"><p>You've succesfully joined the game</p>
         <p>Tell us more about yourself.</p></div>
     <div class="font-menu">Who are you?</div>
     <div class="font-submenu">Alpha-numeric username</div>
     <label for="username" class="input-email">
-        <input type="text" id="username" placeholder="arya" class="input-username"
+        <input type="text" name="name" id="username" placeholder="arya" class="input-username"
                value="<?php
                if (isset($_SESSION['data']['name']))
                    echo $_SESSION['data']['name'];
@@ -27,13 +27,15 @@
     </div>
     <div class="font-menu" id="hobby">You preferences, hobbies, wishes, etc.</div>
     <label for="preferences" class="input-email">
-                <textarea type="text" id="preferences" placeholder="I have a long TOKILL list..."
-                          class="input-username">
+                <textarea type="text" name="preferences" id="preferences" placeholder="I have a long TOKILL list..."
+                          class="input-username"
                     <?php
                     if (isset($_SESSION['data']['hobby']))
-                        echo $_SESSION['data']['hobby'] ?></textarea>
+                        echo $_SESSION['data']['hobby'] ?>></textarea>
     </label>
+    <input type="hidden" name="start">
     <input type="submit" id="button-submit" class="button-submit" value="Save">
-<!--    <input type="hidden" name="second" value="ok">-->
 </form>
-<script src="../../Public/js/script_start.js" type="text/javascript"></script>
+<script src="Public/js/jquery-3.4.1.js" type="text/javascript"></script>
+<script src="Public/js/jquery.dd.js" type="text/javascript"></script>
+<script src="Public/js/script_start.js" type="text/javascript"></script>

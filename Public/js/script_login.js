@@ -46,22 +46,22 @@ document.getElementById('user-password').addEventListener('input', () => {
     }
 });
 
-document.getElementById('button-login').addEventListener('click', (e) => {
-    e.preventDefault();
-    const userEmail = document.getElementById('email');
-    const userPassword = document.getElementById('user-password');
-    if (validation(userEmail, validEmail) && validation(userPassword, validPassword)) {
-        flagEnter = true;
-        const login = document.getElementById('login');
-        login.classList.remove('active');
-        login.classList.add('not-active');
-        document.getElementById('start').classList.add('active');
-        $(document).ready(function () {
-            try {
-                $("body select").msDropDown();
-            } catch (e) {
-                alert(e.message);
-            }
-        });
-    }
-});
+// document.getElementById('button-login').addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const userEmail = document.getElementById('email');
+//     const userPassword = document.getElementById('user-password');
+//     if (validation(userEmail, validEmail) && validation(userPassword, validPassword)) {
+//         flagEnter = true;
+//         // const login = document.getElementById('login');
+//         // login.classList.remove('active');
+//         // login.classList.add('not-active');
+//         // document.getElementById('start').classList.add('active');
+//         $(document).ready(function () {
+//             try {
+//                 $("body select").msDropDown();
+//             } catch (e) {
+//                 alert(e.message);
+//             }
+//         });
+//     }
+// });

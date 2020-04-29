@@ -32,10 +32,10 @@ session_start();
     <div class="column">
         <div class="title"><h3>game of thrones</h3></div>
         <?php
-        if (isset($_SESSION['user'])) {
-            require_once 'App/views/form_start.php';
-        } else {
+        if (!isset($_SESSION['user'])) {
             require_once 'App/views/form_login.php';
+        } else {
+            require_once 'App/views/form_start.php';
         }
         ?>
 
@@ -44,6 +44,6 @@ session_start();
 <script src="Public/js/jquery-3.4.1.js" type="text/javascript"></script>
 <script src="Public/js/jquery.dd.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" type="text/javascript"></script>
-<script src="Public/js/function.js" type="text/javascript"></script>
+<script src="Public/js/slider.js" type="text/javascript"></script>
 </body>
 </html>

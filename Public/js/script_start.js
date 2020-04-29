@@ -51,7 +51,7 @@ document.getElementById("preferences").addEventListener('input', () => {
 });
 
 document.getElementById('button-submit').addEventListener('click', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const userName = document.getElementById('username');
     const yourPreferences = document.getElementById("preferences");
     const selectHouse = document.getElementById('select-house');
@@ -59,6 +59,15 @@ document.getElementById('button-submit').addEventListener('click', (e) => {
         alert('Validation was successful!');
     } else return false;
 });
+
+
+function validation(userValue, validRegExp) {
+    return validRegExp.test(userValue.value);
+}
+
+function validationHouse(selectHouse) {
+    return (selectHouse.value !== "Select House");
+}
 
 $('#select-house').on('change', function () {
     if (validationHouse(document.getElementById('select-house'))) {
@@ -72,8 +81,8 @@ $('#select-house').on('change', function () {
     }
 });
 
-owl.on('resized.owl.carousel', function () {
-    if (validationHouse(document.getElementById('select-house'))) {
-        owl.trigger('stop.owl.autoplay');
-    }
-});
+// owl.on('resized.owl.carousel', function () {
+//     if (validationHouse(document.getElementById('select-house'))) {
+//         owl.trigger('stop.owl.autoplay');
+//     }
+// });
